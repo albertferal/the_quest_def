@@ -6,7 +6,7 @@ Programa hecho con PyGame en el que dispones de una nave y 3 vidas para pasar ca
 
 - Descargar de github: 
 ```
-dd
+gh repo clone albertferal/the_quest_def
 ```
 ## Instalación de dependencias:
 
