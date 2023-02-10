@@ -6,6 +6,7 @@ Programa hecho con PyGame en el que dispones de una nave y 3 vidas para pasar ca
 
 - Descargar de github: 
 ```
+https://github.com/albertferal/the_quest_def
 gh repo clone albertferal/the_quest_def
 ```
 ## Instalación de dependencias:
@@ -19,4 +20,5 @@ pip install -r requirements.txt
 ## Controles del juego:
 - Telcas ARRIBA y ABAJO para moverse verticalmente.
 - Mantener presionada la tecla ESPACIO aumenta la velocidad de la nave.
+- Al finalizar el asedio de meteoritos la nave pasa a moverse sola para aterrizar
 

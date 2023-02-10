@@ -1,5 +1,6 @@
 import pygame as pg  
 import random
+from scores import *
 
 pg.init()
 pg.mixer.init()
@@ -9,11 +10,9 @@ VENTANA_Y = 600
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-
 ventana = pg.display.set_mode((VENTANA_X, VENTANA_Y))
 pg.display.set_caption("THE QUEST")
 reloj = pg.time.Clock()
-
 
 #CLASES
 class Nave(object):
@@ -126,7 +125,7 @@ def repintar_cuadro_juego():
     for ast in listaast:
         ast.dibujar(ventana)
     #TEXTOS
-    puntos = texto_puntos.render("SCORE: " + str(puntaje), 1, (WHITE))
+    puntos = texto_puntos.render("SCORE: " + str(score), 1, (WHITE))
     nivel_actual = texto_nivel.render("Level: " + str(nivel + 1), 1, (255, 255, 255))
     ventana.blit(puntos, (10, 6))
     ventana.blit(nivel_actual, (420, 40))
@@ -201,7 +200,7 @@ while repetir:
     musica_fondo = pg.mixer.music.load(rutamusica[nivel])
     pg.mixer.music.play(-1)
 
-    puntaje = 0
+    score = 0
     texto_juego = pg.font.SysFont("console", 80, True)
     texto_puntos = pg.font.SysFont("Arial", 30, True)
     texto_nivel = pg.font.SysFont("Arial", 30, True)
@@ -257,11 +256,11 @@ while repetir:
         planeta.se_mueve_segun()
         for ast in listaast:
             ast.se_mueve_segun()
-            puntaje += 1
+            score += 1
             #VERIFICAR CHOQUE:
             if ast.se_encuentra_con(nave):
                 ast.es_golpeado() 
-                puntaje -= 10000
+                score -= 10000
                 nave.reinicio_nave()
         #consulta para saber si se sube de nivel
         if nave.x >= 550:
@@ -284,7 +283,9 @@ while repetir:
             resultado = texto_resultado.render("HAS GANADO", 1, (255, 0, 0))
         else:
             resultado = texto_resultado.render("HAS PERDIDO", 1, (255, 255, 255))
-        pts = texto_intro.render("Puntuación total: " + str(puntaje), 1, (255, 255, 255))
+        name = "lol"
+        pts = texto_intro.render("Puntuación total: " + str(score), 1, (255, 255, 255))
+        insertRow(name, score)
         instrucciones = texto_intro.render("Presione ENTER para cerrar", 1, (255, 255, 255))
         reintentar = texto_intro.render("Presione R para volver al inicio", 1, (255, 255, 255))
         ventana.blit(titulo, (VENTANA_X//2 - titulo.get_width() // 2, 10))
