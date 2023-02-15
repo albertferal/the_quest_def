@@ -1,17 +1,10 @@
 import pygame as pg
 import random
-from main import *
 
 VENTANA_X = 1000
 VENTANA_Y = 600 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-
-
-ventana = pg.display.set_mode((VENTANA_X, VENTANA_Y))
-pg.display.set_caption("THE QUEST")
-reloj = pg.time.Clock()
-
 
 class Nave(object):
     def __init__(self, x, y):
@@ -93,7 +86,7 @@ class Asteroide(object):
         self.colision = pg.mixer.Sound("music\colision.wav")
         self.colision.play()
         self.y = 700
-        
+
 class Planeta(object):
     def __init__(self, x, y):
         self.x = x
@@ -108,34 +101,4 @@ class Planeta(object):
     def se_mueve_segun(self):
         if self.x >= 580:
             self.x -= self.velocidad
-        if self.x < 580:
-            nave.se_mueve_sola()
         
-
-def repintar_cuadro_juego():
-    if nivel <= nivel_max:
-        ventana.blit(background[nivel], (0, 0))
-    else:
-        ventana.fill((0,0,0))
-
-    nave.dibujar(ventana)
-    planeta.dibujar(ventana)
-    for ast in listaast:
-        ast.dibujar(ventana)
-    #TEXTOS
-    puntos = texto_puntos.render("SCORE: " + str(puntaje), 1, (WHITE))
-    nivel_actual = texto_nivel.render("Level: " + str(nivel + 1), 1, (255, 255, 255))
-    ventana.blit(puntos, (10, 6))
-    ventana.blit(nivel_actual, (420, 40))
-    pg.display.update()
-
-def subir_nivel():
-    global nivel
-    global nave
-    global nivel_max
-    global musica_fondo
-    global planeta
-    global ventana
-    global playing
-    global listaast
-    global gana

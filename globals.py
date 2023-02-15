@@ -1,0 +1,9 @@
+global nivel
+global nave
+global nivel_max
+global musica_fondo
+global planeta
+global ventana
+global playing
+global listaast
+global gana
